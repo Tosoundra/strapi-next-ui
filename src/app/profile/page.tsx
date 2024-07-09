@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
 	title: 'Заявки',
-	description: 'Страница с заявками',
+	description: 'Страница заявок',
 };
 
 export default function Profile() {
