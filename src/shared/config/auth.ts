@@ -10,6 +10,7 @@ export const authConfig: AuthOptions = {
 				email: { label: 'email', type: 'email', required: true },
 				password: { label: 'password', type: 'password', required: true },
 			},
+      //@ts-ignore
 			async authorize(credentials, req) {},
 		}),
 	],

@@ -21,7 +21,7 @@ export const Header = () => {
 	return (
 		<header className={styles.header}>
 			<h1>База заявок Ronix Systems</h1>
-			<span>{user.username}</span>
+			{/* <span>{user.username}</span> */}
 			<nav className={styles.navigation}>
 				<Link href='/' className={styles.link}>
 					Выйти из личного кабинета
