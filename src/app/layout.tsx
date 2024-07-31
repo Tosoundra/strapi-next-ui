@@ -1,13 +1,17 @@
-import type { Metadata, Viewport } from 'next';
-import { Inter } from 'next/font/google';
+import { SessionProviderLayout } from '@lib/utils';
 import '@styles/globals.css';
-import { Header } from '@components/Header';
+import { Footer, Header } from '@ui/index';
+import classNames from 'classnames';
+import type { Metadata, Viewport } from 'next';
+import { Inter, Montserrat } from 'next/font/google';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ['cyrillic'] });
+const montserrat = Montserrat({ subsets: ['cyrillic'] });
 
 export const metadata: Metadata = {
 	title: 'База заявок Ronix Systems',
-	description: 'База заявок Ronix - внутренний инструмент контроля задач и учёта статуса работы над входящими запросами.',
+	description:
+		'База заявок Ronix - внутренний инструмент контроля задач и учёта статуса работы над входящими запросами.',
 };
 
 export const viewport: Viewport = {
@@ -21,10 +25,12 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang='en'>
-			<body className={inter.className}>
-				<Header />
-
-				<main>{children}</main>
+			<body className={classNames(montserrat.className, inter.className)}>
+				<SessionProviderLayout>
+					<Header />
+					<main>{children}</main>
+					<Footer />
+				</SessionProviderLayout>
 			</body>
 		</html>
 	);

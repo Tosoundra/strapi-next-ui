@@ -1,0 +1,23 @@
+$radius13: 13px;
+$radius20: 20px;
+
+@mixin border {
+	border: 2px solid $utilitiesColor;
+}
+
+@mixin formContainer {
+	overflow: hidden;
+
+	.label-container {
+		padding: 13px;
+		border-top-left-radius: $radius20;
+		border-top-right-radius: $radius20;
+		background-color: $mainBackGroundColor;
+		span {
+			font-size: 16px;
+			font-weight: 700;
+			line-height: 28px;
+			color: #fff;
+		}
+	}
+}

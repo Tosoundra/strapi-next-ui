@@ -1,0 +1,21 @@
+.button {
+	display: grid;
+	place-items: center;
+	width: 95px;
+	height: 28px;
+	border: 1px solid $mainBackGroundColor;
+	border-radius: 5px;
+
+	&:disabled {
+		background-color: $colorEF;
+		border-color: $colorCE;
+		path {
+			fill: $colorCE;
+		}
+	}
+
+	svg {
+		width: 21px;
+		height: 16px;
+	}
+}

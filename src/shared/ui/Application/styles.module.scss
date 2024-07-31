@@ -1,0 +1,37 @@
+.application {
+	position: relative;
+	padding: 50px;
+	@include border;
+	border-radius: $radius20;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1.5fr;
+
+	.info {
+		position: absolute;
+		top: 15px;
+		right: 15px;
+		.tooltip {
+			display: grid;
+			place-items: center;
+			position: absolute;
+			right: 100%;
+			translate: 12.5%;
+			height: 26px;
+			padding-inline: 10px;
+			border-radius: 7px 0 7px 7px;
+			background-color: rgba($color: $utilitiesColor, $alpha: 0.85);
+			opacity: 0;
+			@include tooltipFontStyles;
+		}
+
+		svg:hover + .tooltip {
+			opacity: 1;
+		}
+	}
+
+	.column {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+	}
+}

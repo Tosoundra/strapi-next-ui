@@ -1,0 +1,19 @@
+.form {
+	@include formContainer;
+
+	.body {
+		height: calc(100% - 54px);
+		padding: 26px 10px 10px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		@include border;
+		border-top-color: transparent;
+		border-bottom-left-radius: $radius20;
+		border-bottom-right-radius: $radius20;
+	}
+
+	.content {
+		padding: 25px 10px;
+	}
+}

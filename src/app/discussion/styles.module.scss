@@ -1,0 +1,16 @@
+.send-message-block {
+	height: 45px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	.message {
+		height: 100%;
+		background-color: #efefef;
+		border-radius: $radius13;
+		border-color: #cecece;
+		padding: 15px 10px;
+		resize: none;
+
+		@include textareaFontStyles;
+	}
+}

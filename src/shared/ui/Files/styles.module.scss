@@ -1,0 +1,19 @@
+.file {
+	padding: 16px;
+	border: 1px solid $colorCE;
+	border-radius: $radius13;
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	.download {
+		margin-left: auto;
+	}
+}
+.add-new-file-container {
+	display: grid;
+	place-items: center;
+	.button {
+		height: 45px;
+		padding-inline: 30px;
+	}
+}

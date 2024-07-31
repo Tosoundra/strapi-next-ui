@@ -1,0 +1,18 @@
+.title {
+	margin-bottom: 75px;
+	@include titleFontStyles;
+}
+
+.subtitle {
+	margin-bottom: 75px;
+	@include subtitleFontStyles;
+}
+
+.application {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	.column {
+		display: flex;
+		flex-direction: column;
+	}
+}

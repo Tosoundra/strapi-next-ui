@@ -1,0 +1,15 @@
+.header {
+	position: relative;
+	display: flex;
+
+	.logo {
+		margin: auto;
+	}
+
+	.navigation {
+		position: absolute;
+		right: 0;
+		display: flex;
+		gap: 8px;
+	}
+}

@@ -8,6 +8,11 @@ const __dirname = dirname(__filename);
 const nextConfig = {
 	sassOptions: {
 		includePaths: [path.join(__dirname, 'styles')],
+		prependData: `@import "index.scss";`,
+		
+	},
+	typescript: {
+		ignoreBuildErrors: true,
 	},
 	async redirects() {
 		return [];

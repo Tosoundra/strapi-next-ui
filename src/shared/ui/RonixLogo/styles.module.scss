@@ -1,0 +1,12 @@
+.logo {
+	display: flex;
+	align-items: center;
+}
+
+.small {
+	width: 60px;
+	height: 81px;
+	& > path {
+		fill: #8dd97a66;
+	}
+}
