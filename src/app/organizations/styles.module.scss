@@ -1,0 +1,32 @@
+.list {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+
+	.organization {
+		width: 280px;
+		height: 128px;
+		padding: 12px;
+		display: flex;
+		flex-direction: column;
+		@include border;
+		border-radius: $radius17;
+		border-color: $mainColor;
+
+		.utils-container {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+
+			.info {
+				circle:first-child {
+					fill: $mainColor;
+				}
+			}
+		}
+
+		.label {
+			place-self: center;
+		}
+	}
+}

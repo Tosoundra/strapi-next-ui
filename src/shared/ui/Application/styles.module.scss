@@ -1,37 +1,77 @@
 .application {
-	position: relative;
-	padding: 50px;
-	@include border;
-	border-radius: $radius20;
-	display: grid;
-	grid-template-columns: 1fr 1fr 1.5fr;
+	display: flex;
+	flex-direction: column;
 
-	.info {
-		position: absolute;
-		top: 15px;
-		right: 15px;
-		.tooltip {
-			display: grid;
-			place-items: center;
+	gap: 30px;
+	&-id {
+		margin: auto;
+		@include applicationFontStyles;
+	}
+	.container {
+		width: 100%;
+		position: relative;
+		padding: 50px;
+		@include border;
+		border-radius: $radius20;
+		display: grid;
+		grid-template-columns: 1fr 1fr 1.5fr;
+
+		.info {
 			position: absolute;
-			right: 100%;
-			translate: 12.5%;
-			height: 26px;
-			padding-inline: 10px;
-			border-radius: 7px 0 7px 7px;
-			background-color: rgba($color: $utilitiesColor, $alpha: 0.85);
-			opacity: 0;
-			@include tooltipFontStyles;
+			top: 15px;
+			right: 15px;
+			.tooltip {
+				display: grid;
+				place-items: center;
+				position: absolute;
+				right: 100%;
+				translate: 12.5%;
+				height: 26px;
+				padding-inline: 10px;
+				border-radius: 7px 0 7px 7px;
+				background-color: rgba($color: $utilitiesColor, $alpha: 0.85);
+				opacity: 0;
+				@include tooltipFontStyles;
+			}
+
+			svg:hover + .tooltip {
+				opacity: 1;
+			}
 		}
 
-		svg:hover + .tooltip {
-			opacity: 1;
+		.column {
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+			li {
+				height: 28px;
+			}
+		}
+		.head {
+			font-size: 16px;
+			font-weight: 700;
+			line-height: 28px;
+			@include montserrat;
 		}
 	}
 
-	.column {
+	.form-controls {
 		display: flex;
-		flex-direction: column;
-		gap: 10px;
+		justify-content: space-between;
+		align-items: center;
+
+		.button {
+			width: 160px;
+			height: 48px;
+		}
+		.reset {
+			border-color: $redColor;
+			color: $redColor;
+		}
+		.back {
+			@include button;
+			width: 260px;
+			border-color: $color7B;
+		}
 	}
 }

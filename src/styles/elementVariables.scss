@@ -1,8 +1,26 @@
+$radius7: 7px;
 $radius13: 13px;
+$radius17: 17px;
 $radius20: 20px;
 
 @mixin border {
 	border: 2px solid $utilitiesColor;
+}
+
+@mixin button {
+	@include border;
+	border-color: $mainColor;
+	border-radius: $radius13;
+	@include buttonFontStyles;
+}
+
+@mixin input {
+	width: 100%;
+	height: 44px;
+	padding-inline: 15px;
+	border: 1px solid $utilitiesColor;
+	border-radius: $radius13;
+	@include inputFontStyles;
 }
 
 @mixin formContainer {

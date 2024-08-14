@@ -1,7 +1,3 @@
 .button {
-	height: 48px;
-	@include border;
-	border-color: $mainColor;
-	border-radius: $radius13;
-	@include buttonFontStyles;
+	@include button;
 }

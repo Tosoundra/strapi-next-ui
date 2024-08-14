@@ -1,0 +1,10 @@
+.input {
+	@include input;
+}
+
+.remember {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	color: $color7B;
+}

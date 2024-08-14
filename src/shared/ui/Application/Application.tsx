@@ -8,6 +8,9 @@ import { GoToButton } from '@ui/GoToButton/GoToButton';
 import { Info } from '@ui/Info/Info';
 import { Files } from '@ui/Files/Files';
 import { Comments } from '@ui/Comments/Comments';
+import classNames from 'classnames';
+import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
 
 enum Tabs {
 	'description',
@@ -52,16 +55,18 @@ export const Application: FC<Props> = ({
 	username,
 }) => {
 	const [currentTab, setCurrentTab] = useState<Tabs>(Tabs.description);
+	const route = useRouter();
+	const pathname = usePathname();
 
 	return (
-		<>
-			<span>Заявка {id}</span>
-			<div className={styles.application}>
+		<div className={styles.application}>
+			<span className={styles['application-id']}>Заявка {id}</span>
+			<div className={styles.container}>
 				{/* <div className={styles.info}>
 					<Info />
 					<div className={styles.tooltip}>Заказчик: {username}</div>
 				</div> */}
-				<ul className={styles.column}>
+				<ul className={classNames(styles.column, styles.head)}>
 					<li>ID</li>
 					<li>Статус</li>
 					<li>ФИО</li>
@@ -121,9 +126,21 @@ export const Application: FC<Props> = ({
 				</ul>
 				{currentTab === Tabs.description && <Description className={styles.form} id={1} />}
 				{currentTab === Tabs.files && <Files className={styles.form} id={1} />}
-				{currentTab === Tabs.comments && <Comments className={styles.form} id={1} />}
 				{currentTab === Tabs.discussion && <Chat className={styles.form} id={1} />}
 			</div>
-		</>
+			<div className={styles['form-controls']}>
+				<Button className={classNames(styles.button, styles.submit)} type='submit'>
+					Сохранить
+				</Button>
+				{pathname === 'create-application' && (
+					<Link className={styles.return} href='/applications'>
+						К списку заявок
+					</Link>
+				)}
+				<Button className={classNames(styles.button, styles.reset)} type='reset'>
+					Сбросить
+				</Button>
+			</div>
+		</div>
 	);
 };

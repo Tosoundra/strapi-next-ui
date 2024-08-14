@@ -1,24 +1,56 @@
+'use client';
+
 import { Form, Message, SendButton } from '@ui/index';
 import styles from './styles.module.scss';
+import { EventHandler, FC, FormEvent, useState } from 'react';
 
-export const Description = () => {
+type Props = {
+	description: string;
+};
+
+const USER = 2;
+
+export const Description: FC<Props> = () => {
+	const [textValue, setTextValue] = useState('');
+
+	const [description, setDescription] = useState<[] | string[]>([]);
+	const role = 2;
+
+	const submitTextHandler = (event: FormEvent) => {
+		event.preventDefault();
+		if (!textValue.length) {
+			return;
+		}
+		setDescription((value) => [...value, textValue]);
+		setTextValue('');
+	};
+
 	return (
 		<Form label='Описание проблемы'>
 			<div className={styles.content}>
 				<ul>
-					<li>
-						<Message
-							message='Добрый день! У нас регулярно наблюдаются проблемы с доступностью некоторых серверов, падает индекс доступности и они уходят в BUSY. Собрал nsd. Приходится регулярно перезагружать сервер. Прошу помочь с решением проблемы Эта проблема может возникать по самым различным причинам...Начиная от железа (или настроек виртуальной машины если используется), сетью и самим Домино.Нужно попробовать локализовать проблему:Когда она начала появляться?Что-нибудь изменялось в настройках серверов? Переустановка? Изменение конфигурации?'
-							time='15:25, 04.07.2024'
-							user='Клиент'
-						/>
-					</li>
+					{description.map((value, index) => (
+						<li key={index}>
+							<Message user='Клиент' time={new Date().toLocaleString('ru-RU')}>
+								{value}
+							</Message>
+						</li>
+					))}
 				</ul>
 			</div>
-			{/* <div className={styles['send-message-block']}>
-				<textarea className={styles['message']} rows={1} name='chat' id='chat' spellCheck></textarea>
-				<SendButton className={styles.submit} />
-			</div> */}
+			{role === USER && (
+				<div className={styles['send-message-block']}>
+					<textarea
+						onChange={(e) => setTextValue(e.target.value)}
+						value={textValue}
+						className={styles['message']}
+						rows={1}
+						name='chat'
+						id='chat'
+						spellCheck></textarea>
+					<SendButton onClick={submitTextHandler} className={styles.submit} />
+				</div>
+			)}
 		</Form>
 	);
 };

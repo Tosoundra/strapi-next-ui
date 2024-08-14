@@ -1,0 +1,50 @@
+.container {
+	max-width: 580px;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	padding: 25px 30px;
+	@include border;
+	border-radius: $radius13;
+	color: $color7B;
+
+	fieldset {
+		border: none;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	span {
+		position: relative;
+		width: 200px;
+		padding-right: 100px;
+		font-size: 16px;
+		font-weight: 700;
+		line-height: 28px;
+		@include montserrat;
+		&::after {
+			content: '';
+			position: absolute;
+			right: 0;
+			top: 0;
+			height: 110%;
+			width: 2px;
+			background-color: $utilitiesColor;
+			border-radius: 0 $radius13 $radius13 0;
+			z-index: 1;
+		}
+	}
+
+	th {
+	}
+
+	td {
+		padding-left: 100px;
+	}
+	input[type='text'] {
+		height: 28px;
+		border-radius: $radius7;
+	}
+}

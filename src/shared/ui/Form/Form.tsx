@@ -1,16 +1,13 @@
+'use client';
+
 import { FC, ReactNode } from 'react';
 import styles from './styles.module.scss';
 import classNames from 'classnames';
+import type { FormProps, Tabs } from '@lib/types/index';
 
-type Props = {
-	label: string;
-	children: ReactNode;
-	className?: string;
-};
-
-export const Form: FC<Props> = ({ label, children, className }) => {
+export const Form: FC<FormProps> = ({ label, children, className, ...formProps }) => {
 	return (
-		<form className={classNames(styles.form, className)}>
+		<form {...formProps} className={classNames(styles.form, className)}>
 			<div className={styles['label-container']}>
 				<span>{label}</span>
 			</div>

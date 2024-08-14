@@ -1,0 +1,17 @@
+.info {
+	position: relative;
+
+	.tooltip {
+		position: absolute;
+		padding: 10px;
+		border-radius: 7px 0 7px 7px;
+		background-color: rgba($color: $utilitiesColor, $alpha: 0.85);
+		display: none;
+		@include tooltipFontStyles;
+		text-wrap: nowrap;
+	}
+
+	svg:hover + .tooltip {
+		display: block;
+	}
+}

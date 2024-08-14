@@ -3,9 +3,9 @@ import { ComponentProps, FC } from 'react';
 import styles from './styles.module.scss';
 import classNames from 'classnames';
 
-export const SendButton: FC<ComponentProps<'button'>> = ({ className }) => {
+export const SendButton: FC<ComponentProps<'button'>> = ({ className, onClick }) => {
 	return (
-		<Button className={classNames(styles['send-button'], className)} type='submit'>
+		<Button onClick={onClick} className={classNames(styles['send-button'], className)} type='submit'>
 			<svg xmlns='http://www.w3.org/2000/svg' width='26' height='23' fill='none'>
 				<path
 					fill='#fff'

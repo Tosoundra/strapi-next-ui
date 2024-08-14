@@ -16,7 +16,7 @@ export const Files = () => {
 					</li>
 				</ul>
 			</div>
-			<div className={styles['add-new-file-container']}>
+			<div className={styles['action-block']}>
 				<Button className={styles.button}>
 					<Image width={27} height={27} src='/icons/CREATE_APPLICATION_ICON.svg' alt='Добавить файл' />
 				</Button>

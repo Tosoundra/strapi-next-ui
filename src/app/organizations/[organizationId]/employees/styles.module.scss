@@ -1,0 +1,40 @@
+.container {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+
+	.employees-list {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+		align-items: flex-start;
+
+		.employee {
+			max-width: 300px;
+			width: 100%;
+			padding: 6px 16px;
+			@include border;
+			border-radius: $radius7;
+			border-color: $color7B;
+		}
+	}
+}
+
+.actions-menu {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	.button {
+		width: 160px;
+		height: 48px;
+
+		&:first-child {
+			@include button;
+			display: grid;
+			place-items: center;
+			border-color: $color7B;
+			color: $color7B;
+		}
+	}
+}

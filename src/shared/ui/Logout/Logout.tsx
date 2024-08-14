@@ -1,10 +1,10 @@
 'use client';
 
 import { signOut } from 'next-auth/react';
-import Image from 'next/image';
 import Link from 'next/link';
+import { FC } from 'react';
 
-export default function Logout() {
+export const Logout: FC = () => {
 	return (
 		<Link href='/' onClick={() => signOut({ callbackUrl: '/' })}>
 			<svg xmlns='http://www.w3.org/2000/svg' width='26' height='26' fill='none'>
@@ -14,7 +14,7 @@ export default function Logout() {
 				<path
 					fill='#F1F4F1'
 					stroke='#70DA55'
-					stroke-width='4'
+					strokeWidth='4'
 					d='M13 24.573c0 .788-.641 1.435-1.425 1.349a13 13 0 0 1 0-25.844C12.36-.008 13 .64 13 1.428c0 .788-.642 1.416-1.423 1.527a10.145 10.145 0 0 0 0 20.09c.78.11 1.423.74 1.423 1.528Z'
 					mask='url(#a)'
 				/>
@@ -25,4 +25,4 @@ export default function Logout() {
 			</svg>
 		</Link>
 	);
-}
+};

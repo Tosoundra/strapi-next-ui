@@ -1,27 +1,22 @@
 import { GET } from '@lib/utils';
 
-interface API {
-	getApplications: () => Promise<any[]>;
-	getApplication: (id: string) => Promise<any>;
-}
-
-class BackendAPI implements API {
-	URL: string;
+export class ApplicationsApi {
+	private URL: string;
 
 	constructor() {
-		this.URL = process.env.STRAPI_BACKEND_API!;
+		this.URL = `${process.env.STRAPI_BACKEND_API}/applications`;
 	}
 	async getApplications(): Promise<any[]> {
-		return GET(`${this.URL}applications`);
+		return GET(`${this.URL}`);
 	}
 
 	async getApplication(id: string) {
-		return GET(`${this.URL}applications/${id}`);
+		return GET(`${this.URL}/${id}`);
 	}
 
 	async getDiscussionList(id: string, discussionId: string) {
-		return GET(`${this.URL}applications/${id}`);
+		return GET(`${this.URL}/${id}`);
 	}
 }
 
-export const api = new BackendAPI();
+

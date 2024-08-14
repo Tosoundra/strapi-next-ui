@@ -2,10 +2,11 @@ import Link from 'next/link';
 import styles from './styles.module.scss';
 import { Inter } from 'next/font/google';
 import classNames from 'classnames';
+import { FC } from 'react';
 
 const inter = Inter({ subsets: ['latin'] });
 
-export default function Footer() {
+export const Footer: FC = () => {
 	return (
 		<footer className={classNames(styles.footer, inter.className)}>
 			<Link href='#'>Лицензионное соглашение</Link>
@@ -13,4 +14,4 @@ export default function Footer() {
 			<Link href='#'>Политика конфиденциальности</Link>
 		</footer>
 	);
-}
+};
