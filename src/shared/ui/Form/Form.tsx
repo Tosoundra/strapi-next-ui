@@ -3,7 +3,7 @@
 import { FC, ReactNode } from 'react';
 import styles from './styles.module.scss';
 import classNames from 'classnames';
-import type { FormProps, Tabs } from '@lib/types/index';
+import type { FormProps, Tabs } from '@shared/lib/types/index';
 
 export const Form: FC<FormProps> = ({ label, children, className, ...formProps }) => {
 	return (

@@ -1,10 +1,9 @@
-'use client'
+'use client';
 
-import { EmployeeForm, Input } from '@ui/index';
+import { EmployeeForm, Input } from '@shared/ui';
 import { ComponentProps, FC, useState } from 'react';
 
 export const CreateNewEmployee: FC<ComponentProps<'form'>> = ({ ...formProps }) => {
-
 	const [username, setUsername] = useState('');
 
 	return (

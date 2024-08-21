@@ -1,4 +1,4 @@
-import { GET } from '@lib/utils';
+import { GET } from '@shared/lib/utils';
 
 export class ApplicationsApi {
 	private URL: string;
@@ -18,5 +18,3 @@ export class ApplicationsApi {
 		return GET(`${this.URL}/${id}`);
 	}
 }
-
-

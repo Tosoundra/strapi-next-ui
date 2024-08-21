@@ -1,6 +1,6 @@
 'use client';
-import type { OrganizationType } from '@lib/types';
-import { AcceptButton, DeclineButton, Edit, Info, Input } from '@ui/index';
+import type { OrganizationType } from '@shared/lib/types';
+import { AcceptButton, DeclineButton, Edit, Info, Input } from '@shared/ui';
 import Link from 'next/link';
 import { FC, useEffect, useState } from 'react';
 import styles from './styles.module.scss';

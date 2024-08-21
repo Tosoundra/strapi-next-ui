@@ -1,4 +1,4 @@
-import { api } from '@api/Api';
+import { api } from '@shared/api';
 import { NextResponse } from 'next/server';
 
 export async function PUT(request: Request) {

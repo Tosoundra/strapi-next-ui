@@ -1,10 +1,9 @@
-import { api } from '@api/Api';
-import { AdminDashboardContainer, Button } from '@ui/index';
+import { api } from '@shared/api';
+import { AdminDashboardContainer, Button } from '@shared/ui';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { ReactNode } from 'react';
 import styles from './styles.module.scss';
-import { redirect } from 'next/navigation';
 
 type Props = {
 	params: { organizationId: string };

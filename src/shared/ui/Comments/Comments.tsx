@@ -1,5 +1,5 @@
-import { Form } from '@ui/index';
-import styles from './styles.module.scss'
+import { Form } from '@shared/ui';
+import styles from './styles.module.scss';
 
 export const Comments = () => {
 	return (

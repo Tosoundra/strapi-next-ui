@@ -1,6 +1,6 @@
 'use client';
 
-import { Form, Message, SendButton } from '@ui/index';
+import { Form, Message, SendButton } from '@shared/ui';
 import styles from './styles.module.scss';
 import { EventHandler, FC, FormEvent, useState } from 'react';
 

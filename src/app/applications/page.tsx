@@ -1,9 +1,9 @@
 // import { authOptions } from '@config/auth';
-import { Application } from '@ui/index';
+import { Application } from '@shared/ui';
 import { Metadata } from 'next';
 import { getServerSession } from 'next-auth';
 import styles from './styles.module.scss';
-import { api } from '@api/Api';
+import { api } from '@shared/api';
 
 export const metadata: Metadata = {
 	title: 'Заявки',

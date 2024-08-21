@@ -1,4 +1,4 @@
-import { ConfirmationButton } from '@ui/index';
+import { ConfirmationButton } from '@shared/ui';
 import { ComponentProps, FC } from 'react';
 
 export const DeclineButton: FC<ComponentProps<'button'>> = ({ ...buttonProps }) => {

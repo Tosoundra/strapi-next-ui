@@ -2,12 +2,12 @@
 
 import { FC, ReactNode, useState } from 'react';
 import styles from './styles.module.scss';
-import { Chat, Button, Description } from '@ui/index';
+import { Chat, Button, Description } from '@shared/ui';
 import Image from 'next/image';
-import { GoToButton } from '@ui/GoToButton/GoToButton';
-import { Info } from '@ui/Info/Info';
-import { Files } from '@ui/Files/Files';
-import { Comments } from '@ui/Comments/Comments';
+import { GoToButton } from '@shared/ui/';
+import { Info } from '@shared/ui/';
+import { Files } from '@shared/ui/';
+import { Comments } from '@shared/ui/';
 import classNames from 'classnames';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';

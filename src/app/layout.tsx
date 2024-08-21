@@ -1,6 +1,6 @@
-import { SessionProviderLayout } from '@lib/utils';
+import { SessionProviderLayout } from '@shared/lib/utils';
 import '@styles/globals.css';
-import { Footer, Header } from '@ui/index';
+import { Footer, Header } from '@shared/ui';
 import classNames from 'classnames';
 import type { Metadata, Viewport } from 'next';
 import { Inter, Montserrat } from 'next/font/google';

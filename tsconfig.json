@@ -20,13 +20,7 @@
 			"@components/*": ["src/components/*"],
 			"@styles/*": ["src/styles/*"],
 			"@layouts/*": ["src/layouts/*"],
-			"@images/*": ["src/shared/images/*"],
-			"@api/*": ["src/shared/api/*"],
-			"@lib/*": ["src/shared/lib/*"],
-			"@ui/*": ["src/shared/ui/*"],
-			"@icons/*": ["src/shared/icons/*"],
-			"@config/*": ["src/shared/config/*"],
-			"@constants/*": ["src/shared/constants/*"],
+			"@shared/*": ["src/shared/*"],
 			"@pages/*": ["src/pages/*"],
 			"@entities/*": ["src/entities/*"],
 			"@features/*": ["src/features/*"]
@@ -38,6 +32,12 @@
 			}
 		]
 	},
-	"include": ["src", "src/index.tsx", "react-app-env.d.ts", ".next/types/**/*.ts", "src/shared/lib/types/**/*.ts"],
+	"include": [
+		"src",
+		"src/index.tsx",
+		"react-app-env.d.ts",
+		".next/types/**/*.ts",
+		"src/shared/shared/lib/types/**/*.ts"
+	],
 	"exclude": ["node_modules"]
 }

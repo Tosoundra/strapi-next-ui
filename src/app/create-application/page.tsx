@@ -1,4 +1,4 @@
-import { ApplicationForm } from '@ui/index';
+import { ApplicationForm } from '@shared/ui';
 import { NewApplication } from '@ui/NewApplication/NewApplication';
 import { Metadata } from 'next';
 import { useState } from 'react';

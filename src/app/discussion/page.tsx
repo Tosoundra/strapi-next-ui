@@ -1,4 +1,4 @@
-import { Form, SendButton } from '@ui/index';
+import { Form, SendButton } from '@shared/ui';
 import styles from './styles.module.scss';
 
 const getMessages = () => {

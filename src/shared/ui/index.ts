@@ -3,6 +3,7 @@ export { Footer } from './Footer/Footer';
 export { Button } from './Button/Button';
 export { Input } from './/Input/Input';
 export { SendButton } from './SendButton/SendButton';
+export { GoToButton } from './GoToButton/GoToButton';
 export { Chat } from './Chat/Chat';
 export { Application } from './Application/Application';
 export { ApplicationForm } from './ApplicationForm/ApplicationForm';

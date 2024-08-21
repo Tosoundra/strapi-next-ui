@@ -1,5 +1,5 @@
-import { UserStrapiResponse } from '@lib/types';
-import { POST } from '@lib/utils';
+import { UserStrapiResponse } from '@shared/lib/types';
+import { POST } from '@shared/lib/utils';
 
 type Credentials = {
 	identifier: string;
@@ -21,7 +21,7 @@ interface AuthType {
 	register: (registerData: RegisterData) => Promise<UserStrapiResponse>;
 }
 
-export class Auth implements AuthType {
+export class AuthApi implements AuthType {
 	private URL: string;
 
 	constructor() {

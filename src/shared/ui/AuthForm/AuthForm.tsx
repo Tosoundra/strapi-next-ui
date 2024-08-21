@@ -1,9 +1,9 @@
 'use client';
 
-import { Form, Button } from '@ui/index';
+import { Form, Button } from '@shared/ui';
 import { FC } from 'react';
 import styles from './styles.module.scss';
-import { FormProps } from '@lib/types';
+import { FormProps } from '@shared/lib/types';
 
 type Props = {
 	submitLabel: string;

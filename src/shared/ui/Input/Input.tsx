@@ -1,5 +1,5 @@
 'use client';
-import { Confirmed, Edit, Show } from '@ui/index';
+import { Confirmed, Edit, Show } from '@shared/ui';
 import classNames from 'classnames';
 import { ComponentProps, FC, MouseEventHandler, useState } from 'react';
 import styles from './styles.module.scss';

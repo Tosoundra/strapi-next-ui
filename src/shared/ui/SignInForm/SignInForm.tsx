@@ -1,12 +1,12 @@
 'use client';
 
-import { AuthForm } from '@ui/index';
+import { AuthForm } from '@shared/ui';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import { useState, type FormEventHandler } from 'react';
+import { FC, useState, type FormEventHandler } from 'react';
 import styles from './styles.module.scss';
 
-export const SignInForm = () => {
+export const SignInForm: FC = () => {
 	const [error, setError] = useState('');
 
 	const router = useRouter();

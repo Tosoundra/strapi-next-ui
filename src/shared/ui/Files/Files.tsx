@@ -1,4 +1,4 @@
-import { Button, Form, SendButton } from '@ui/index';
+import { Button, Form, SendButton } from '@shared/ui';
 import styles from './styles.module.scss';
 import Image from 'next/image';
 

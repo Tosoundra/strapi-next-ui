@@ -1,3 +1,4 @@
 {
-	"cSpell.words": ["NEXTAUTH", "Ronix"]
+	"cSpell.words": ["NEXTAUTH", "Ronix"],
+	"findUnusedExports.detectCircularImports": true
 }

@@ -1,4 +1,4 @@
-import { authOptions } from '@config/authOptions';
+import { authOptions } from '@shared/config';
 import { getServerSession } from 'next-auth';
 
 type ErrorApiResponse = {

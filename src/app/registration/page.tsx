@@ -1,4 +1,4 @@
-import { Form, Button, AuthForm } from '@ui/index';
+import { Form, Button, AuthForm } from '@shared/ui';
 import Link from 'next/link';
 import styles from './styles.module.scss';
 import { Metadata } from 'next';

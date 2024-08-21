@@ -1,11 +1,10 @@
-import { api } from '@api/Api';
-import { EmployeeForm, Input } from '@ui/index';
+import { api } from '@shared/api';
+import { EmployeeForm, Input } from '@shared/ui';
 import styles from './styles.module.scss';
 
 type Props = {
 	params: { id: string; organizationId: string };
 };
-
 
 const addUserHandler = async (data: FormData) => {
 	'use server';
@@ -25,9 +24,8 @@ const addUserHandler = async (data: FormData) => {
 	redirect(`/organizations/${organization}/employees`);
 };
 
-
 export default async function Edit({ params }: Props) {
 	const user = await api.users.getUser(params.id);
 
-	return <EmployeeForm  hidable editable email={user.email} password='1231231232' phone={user.username} />;
+	return <EmployeeForm hidable editable email={user.email} password='1231231232' phone={user.username} />;
 }

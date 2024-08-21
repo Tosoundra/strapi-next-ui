@@ -1,5 +1,4 @@
-import { api } from '@api/Api';
-import { UserStrapiResponse } from '@lib/types';
+import { api } from '@shared/api';
 import { AuthOptions } from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 import { cookies } from 'next/headers';

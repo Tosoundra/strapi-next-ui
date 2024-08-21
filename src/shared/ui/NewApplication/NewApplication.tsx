@@ -1,6 +1,6 @@
 'use client';
 
-import { ApplicationForm } from '@ui/index';
+import { ApplicationForm } from '@shared/ui';
 import { usePathname } from 'next/navigation';
 import { FC, useState } from 'react';
 

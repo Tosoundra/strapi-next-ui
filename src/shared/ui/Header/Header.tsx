@@ -1,4 +1,4 @@
-import { Logout } from '@ui/index';
+import { Logout } from '@shared/ui';
 import { RonixLogo } from '@ui/RonixLogo/RonixLogo';
 import Image from 'next/image';
 import Link from 'next/link';

@@ -1,5 +1,5 @@
-import type { StrapiResponse, OrganizationType, UserStrapi } from '@lib/types';
-import { GET, POST, PUT } from '@lib/utils';
+import type { StrapiResponse, OrganizationType, UserStrapi } from '@shared/lib/types';
+import { GET, POST, PUT } from '@shared/lib/utils';
 
 export class OrganizationsApi {
 	private URL: string;
@@ -17,11 +17,7 @@ export class OrganizationsApi {
 	async getEmployees(id: string): Promise<StrapiResponse<{ id: number; users: UserStrapi[] }>> {
 		return GET(`${this.URL}/${id}?fields[0]&populate=users`);
 	}
-
-	async updateOrganization(
-		id: string,
-		data: OrganizationType,
-	): Promise<StrapiResponse<OrganizationType>> {
+	async updateOrganization(id: string, data: OrganizationType): Promise<StrapiResponse<OrganizationType>> {
 		return PUT(`${this.URL}/${id}`, data);
 	}
 }

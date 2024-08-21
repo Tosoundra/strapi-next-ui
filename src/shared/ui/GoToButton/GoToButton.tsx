@@ -1,5 +1,4 @@
-import { Button } from '@ui/index';
-import Image from 'next/image';
+import { Button } from '@shared/ui';
 import { ComponentProps, FC } from 'react';
 import styles from './styles.module.scss';
 

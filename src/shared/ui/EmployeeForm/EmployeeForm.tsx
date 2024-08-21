@@ -1,9 +1,8 @@
 'use client';
 
-import { Input } from '@ui/index';
-import { ComponentProps, FC, FormEventHandler, ReactNode } from 'react';
+import { Input } from '@shared/ui';
+import { ComponentProps, FC } from 'react';
 import styles from './styles.module.scss';
-import { api } from '@api/Api';
 
 type Props = {
 	// children: ReactNode;

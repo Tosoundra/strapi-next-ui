@@ -1,5 +1,5 @@
-import { UserStrapi } from '@lib/types';
-import { GET, POST } from '@lib/utils';
+import { UserStrapi } from '@shared/lib/types';
+import { GET, POST } from '@shared/lib/utils';
 
 export class UsersApi {
 	private URL: string;

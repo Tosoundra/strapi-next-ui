@@ -1,7 +1,7 @@
-import { EmployeeForm, Input } from '@ui/index';
+import { EmployeeForm, Input } from '@shared/ui';
 import { FormEventHandler, FormHTMLAttributes, useState } from 'react';
 import styles from './styles.module.scss';
-import { api } from '@api/Api';
+import { api } from '@shared/api';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { CreateNewEmployee } from '@features/ui';

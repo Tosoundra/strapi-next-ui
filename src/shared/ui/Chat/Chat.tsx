@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import styles from './styles.module.scss';
-import { Form, SendButton, Message } from '@ui/index';
+import { Form, SendButton, Message } from '@shared/ui';
 
 type Props = {
 	id: number;

@@ -1,5 +1,5 @@
 'use client';
-import { Button } from '@ui/index';
+import { Button } from '@shared/ui';
 import { ComponentProps, FC, useState } from 'react';
 import styles from './styles.module.scss';
 

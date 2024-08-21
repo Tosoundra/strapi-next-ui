@@ -1,5 +1,5 @@
-import { api } from '@api/Api';
-import { AdminDashboardContainer, Edit, Info } from '@ui/index';
+import { api } from '@shared/api';
+import { AdminDashboardContainer, Edit, Info } from '@shared/ui';
 import Link from 'next/link';
 import styles from './styles.module.scss';
 import { Organization } from '@entities/index';
