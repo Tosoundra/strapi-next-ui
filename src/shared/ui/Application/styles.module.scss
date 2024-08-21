@@ -48,10 +48,7 @@
 			}
 		}
 		.head {
-			font-size: 16px;
-			font-weight: 700;
-			line-height: 28px;
-			@include montserrat;
+			@include formHeadersFontStyles;
 		}
 	}
 

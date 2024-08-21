@@ -4,6 +4,7 @@ import styles from './styles.module.scss';
 import { api } from '@api/Api';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
+import { CreateNewEmployee } from '@features/ui';
 
 type Props = {
 	params: {
@@ -30,13 +31,17 @@ const addUserHandler = async (data: FormData) => {
 };
 
 export default function NewEmployee({ params }: Props) {
-	return (
-		<EmployeeForm action={addUserHandler} email='' password='' phone='' confirmable>
-			<fieldset>
-				<span>Имя</span>
-				<Input confirmable value='' type='text' name='username' id='username' required />
-			</fieldset>
-			<input type='hidden' name='organization' value={params.organizationId} />
-		</EmployeeForm>
-	);
+	return <CreateNewEmployee />;
 }
+
+// export default function NewEmployee({ params }: Props) {
+// 	return (
+// 		<EmployeeForm action={addUserHandler} email='' password='' phone='' confirmable>
+// 			<fieldset>
+// 				<span>Имя</span>
+// 				<Input confirmable value='' type='text' name='username' id='username' required />
+// 			</fieldset>
+// 			<input type='hidden' name='organization' value={params.organizationId} />
+// 		</EmployeeForm>
+// 	);
+// }

@@ -1,9 +1,10 @@
 import { api } from '@api/Api';
+import { UserStrapiResponse } from '@lib/types';
 import { AuthOptions } from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 import { cookies } from 'next/headers';
 
-export const authConfig: AuthOptions = {
+export const authOptions: AuthOptions = {
 	providers: [
 		Credentials({
 			type: 'credentials',
@@ -26,8 +27,8 @@ export const authConfig: AuthOptions = {
 				} else {
 					cookies().delete('remember');
 				}
-				return authResponse.user;
-				// return { name: authResponse.user.username, email: authResponse.user.email, jwt: authResponse.jwt };
+
+				return authResponse;
 			},
 		}),
 	],
@@ -35,7 +36,20 @@ export const authConfig: AuthOptions = {
 	session: {
 		strategy: 'jwt',
 	},
+	callbacks: {
+		async jwt({ token, user }) {
+			if (user) {
+				token.email = user.user.email;
+				token.name = user.user.username;
+				token.jwt = user.jwt;
+			}
+			return token;
+		},
 
+		async session({ token, session }) {
+			return { ...session, jwt: token.jwt };
+		},
+	},
 	pages: {
 		signIn: '/',
 	},

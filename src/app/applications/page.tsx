@@ -1,4 +1,4 @@
-// import { authConfig } from '@config/auth';
+// import { authOptions } from '@config/auth';
 import { Application } from '@ui/index';
 import { Metadata } from 'next';
 import { getServerSession } from 'next-auth';
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 export default async function Applications() {
-	// const session = await getServerSession(authConfig);
+	// const session = await getServerSession(authOptions);
 	// const applications = await api.applications.getApplications();
 
 	return (

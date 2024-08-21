@@ -1,2 +1,2 @@
 export { SessionProviderLayout } from './layouts/SessionProvider/SessionProviderLayout';
-export { GET, POST } from './fetchHelpers/fetchHelpers';
+export { GET, POST, PUT } from './fetchHelpers/fetchHelpers';

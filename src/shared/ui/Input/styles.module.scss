@@ -1,19 +1,31 @@
 .container {
+	width: 220px;
 	display: flex;
 	align-items: center;
 	gap: 24px;
 	text-wrap: nowrap;
-
-	span,
-	input[type='text'] {
-		width: 220px;
-	}
-
-	.input {
-		@include input;
-		color: $color7B;
-	}
 }
+
+.input {
+	width: 100%;
+	@include input;
+	color: $color7B;
+}
+
+.error {
+	color: $redColor;
+	font-size: 12px;
+}
+
+.active {
+	color: #000;
+}
+
+.hidden-border {
+	border-color: transparent;
+	outline-color: transparent;
+}
+
 .offset-left {
 	translate: calc(-24px - 22px) 0;
 }

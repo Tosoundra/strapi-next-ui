@@ -1,9 +1,12 @@
+'use client';
+
 import { Input } from '@ui/index';
-import { ComponentProps, FC, ReactNode } from 'react';
+import { ComponentProps, FC, FormEventHandler, ReactNode } from 'react';
 import styles from './styles.module.scss';
+import { api } from '@api/Api';
 
 type Props = {
-	children: ReactNode;
+	// children: ReactNode;
 	phone: string;
 	email: string;
 	password: string;
@@ -22,6 +25,12 @@ export const EmployeeForm: FC<Props> = ({
 	confirmable = false,
 	...formProps
 }) => {
+	// const onSubmitHandler: FormEventHandler<HTMLFormElement> = async (event) => {
+	// 	event.preventDefault();
+	// 	const formData = new FormData(event.target as HTMLFormElement);
+	// 	formData.forEach((value) => console.log(value));
+	// };
+
 	return (
 		<form className={styles.container} id='employee-form' {...formProps}>
 			{children}
@@ -31,7 +40,6 @@ export const EmployeeForm: FC<Props> = ({
 					className={styles.input}
 					editable={editable}
 					confirmable={confirmable}
-					hidable={hidable}
 					value={phone}
 					type='text'
 					name='phone'
@@ -45,7 +53,6 @@ export const EmployeeForm: FC<Props> = ({
 					className={styles.input}
 					confirmable={confirmable}
 					editable={editable}
-					hidable={hidable}
 					value={email}
 					type='email'
 					name='email'

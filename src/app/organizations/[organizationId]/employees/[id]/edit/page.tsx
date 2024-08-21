@@ -1,44 +1,33 @@
 import { api } from '@api/Api';
-import { Input } from '@ui/index';
+import { EmployeeForm, Input } from '@ui/index';
 import styles from './styles.module.scss';
 
 type Props = {
 	params: { id: string; organizationId: string };
 };
 
+
+const addUserHandler = async (data: FormData) => {
+	'use server';
+	const { username, phone, email, password, organization } = Object.fromEntries(data);
+	const registerData = {
+		username,
+		password,
+		phone,
+		email,
+		organization: { id: Number(organization) },
+	};
+
+	const response = await api.auth.register(registerData);
+	if (response.error) {
+		return;
+	}
+	redirect(`/organizations/${organization}/employees`);
+};
+
+
 export default async function Edit({ params }: Props) {
 	const user = await api.users.getUser(params.id);
 
-	return (
-		<table className={styles.container}>
-			<tbody>
-				<tr>
-					<th className={styles.head}>Телефон</th>
-					<td className={styles.body}>
-						<Input className={styles.input} editable value={user.phone} type='text' name='username' id='username' />
-					</td>
-				</tr>
-				<tr>
-					<th className={styles.head}>E-mail</th>
-					<td className={styles.body}>
-						<Input className={styles.input} editable value={user.email} type='email' name='email' id='email' />
-					</td>
-				</tr>
-				<tr>
-					<th className={styles.head}>Пароль</th>
-					<td className={styles.body}>
-						<Input
-							className={styles.input}
-							hidable
-							editable
-							value='Иванов Иван Иванович'
-							type='password'
-							name='password'
-							id='password'
-						/>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-	);
+	return <EmployeeForm  hidable editable email={user.email} password='1231231232' phone={user.username} />;
 }

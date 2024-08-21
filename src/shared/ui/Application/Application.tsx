@@ -11,6 +11,7 @@ import { Comments } from '@ui/Comments/Comments';
 import classNames from 'classnames';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
+import { useSession } from 'next-auth/react';
 
 enum Tabs {
 	'description',
@@ -57,6 +58,9 @@ export const Application: FC<Props> = ({
 	const [currentTab, setCurrentTab] = useState<Tabs>(Tabs.description);
 	const route = useRouter();
 	const pathname = usePathname();
+	const a = useSession();
+
+	console.log(a);
 
 	return (
 		<div className={styles.application}>

@@ -22,13 +22,13 @@ export const SignInForm = () => {
 			password,
 			rememberMe,
 			redirect: false,
-			callbackUrl: '/applications',
+			callbackUrl: '/organizations',
 		});
 		if (!user?.ok) {
 			setError(user?.error!);
 			return;
 		}
-		router.replace('/applications');
+		router.replace('/organizations');
 	};
 
 	return (

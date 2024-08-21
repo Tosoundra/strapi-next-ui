@@ -18,5 +18,8 @@ export { Info } from './Info/Info';
 export { Edit } from './Edit/Edit';
 export { Show } from './Show/Show';
 export { Confirmed } from './Confirmed/Confirmed';
+export { AcceptButton } from './AcceptButton/AcceptButton';
+export { DeclineButton } from './DeclineButton/DeclineButton';
+export { ConfirmationButton } from './ConfirmationButton/ConfirmationButton';
 export { AdminDashboardContainer } from './AdminDashboardContainer/AdminDashboardContainer';
 export { EmployeeForm } from './EmployeeForm/EmployeeForm';

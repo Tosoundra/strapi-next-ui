@@ -1,20 +1,21 @@
 'use client';
 import { Confirmed, Edit, Show } from '@ui/index';
 import classNames from 'classnames';
-import { ChangeEventHandler, ComponentProps, FC, MouseEventHandler, useState } from 'react';
+import { ComponentProps, FC, MouseEventHandler, useState } from 'react';
 import styles from './styles.module.scss';
 
 type Props = {
 	editable?: boolean;
 	hidable?: boolean;
 	confirmable?: boolean;
+	common?: boolean;
 	value: string;
 } & ComponentProps<'input'>;
 
 export const Input: FC<Props> = ({
 	editable = false,
-	hidable: hidable = false,
-
+	hidable = false,
+	common = false,
 	confirmable = false,
 	className,
 	value,
@@ -22,6 +23,7 @@ export const Input: FC<Props> = ({
 }) => {
 	const [isEditActive, setIsEditActive] = useState(false);
 	const [isVisible, setIsVisible] = useState(false);
+	const [error, setError] = useState('');
 
 	const onClickEditHandler: MouseEventHandler<HTMLButtonElement> = () => {
 		setIsEditActive(!isEditActive);
@@ -33,7 +35,17 @@ export const Input: FC<Props> = ({
 			<div className={classNames(styles.container)}>
 				<Confirmed required />
 				<input {...inputProps} className={classNames(styles.input, className)} type='text' defaultValue={value} />
+				<span>{error}</span>
 			</div>
+		);
+	}
+
+	if (common) {
+		return (
+			<>
+				<input className={classNames(styles.input, className)} {...inputProps} />
+				<span>{error}</span>
+			</>
 		);
 	}
 
@@ -45,11 +57,31 @@ export const Input: FC<Props> = ({
 			{editable && <Edit onClick={onClickEditHandler} type='button' />}
 
 			{hidable && !isVisible ? (
-				<span>{value.replace(/./g, '*')}</span>
+				<input
+					{...inputProps}
+					className={classNames(styles.input, styles['hidden-border'], className)}
+					type='password'
+					defaultValue={value}
+					readOnly
+				/>
 			) : isEditActive && editable ? (
-				<input {...inputProps} className={classNames(styles.input, className)} type='text' defaultValue={value} />
+				<>
+					<input
+						{...inputProps}
+						className={classNames(styles.input, styles.active, className)}
+						type='text'
+						defaultValue={value}
+					/>
+					<span>{error}</span>
+				</>
 			) : (
-				<span>{value}</span>
+				<input
+					{...inputProps}
+					className={classNames(styles.input, styles['hidden-border'], className)}
+					type='text'
+					readOnly
+					defaultValue={value}
+				/>
 			)}
 		</div>
 	);

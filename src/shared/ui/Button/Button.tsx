@@ -7,9 +7,9 @@ type Props = {
 	className?: string;
 } & ComponentProps<'button'>;
 
-export const Button: FC<Props> = ({ children, className, ...ComponentProps }) => {
+export const Button: FC<Props> = ({ children, className, ...buttonProps }) => {
 	return (
-		<button className={classNames(styles.button, className)} {...ComponentProps}>
+		<button className={classNames(styles.button, className)} {...buttonProps}>
 			{children}
 		</button>
 	);

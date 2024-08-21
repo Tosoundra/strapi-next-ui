@@ -1,36 +1,44 @@
-import styles from './styles.module.scss';
-import { Inter } from 'next/font/google';
-import Link from 'next/link';
 import { api } from '@api/Api';
 import { AdminDashboardContainer, Edit, Info } from '@ui/index';
-
-const inter = Inter({ subsets: ['cyrillic'] });
+import Link from 'next/link';
+import styles from './styles.module.scss';
+import { Organization } from '@entities/index';
 
 const getOrganizationsList = () => {
 	return api.organizations.getOrganizations();
 };
 
+const updateOrganizationHandler = async (id: number, formData: FormData) => {
+	'use server';
+
+	const { name, phone, email } = Object.fromEntries(formData);
+	const response = await api.organizations.updateOrganization(String(id), {
+		name: formData.get('name') as string,
+		phone: formData.get('phone') as string,
+		email: formData.get('email') as string,
+		id,
+	});
+};
+
 export default async function Organizations() {
-	const { data: organizations } = await getOrganizationsList();
+	const response = await getOrganizationsList();
+
+	if ('error' in response) {
+		return <h1>Ошибка при загрузке списка организаций</h1>;
+	}
 
 	return (
 		<AdminDashboardContainer tabName='Клиенты' href='/register'>
 			<ul className={styles.list}>
-				{organizations.map((organization) => (
+				{response.data.map((organization) => (
 					<li key={organization.id}>
-						<div className={styles.organization}>
-							<div className={styles['utils-container']}>
-								<Info className={styles.info}>
-									<p>Компания: {organization.name}</p>
-									<p>Телефон: {organization.phone}</p>
-									<p>Почта: {organization.email}</p>
-								</Info>
-								<Edit />
-							</div>
-							<Link href={`/organizations/${organization.id}/employees/`} className={styles.label}>
-								{organization.name}
-							</Link>
-						</div>
+						<Organization
+							email={organization.email}
+							id={organization.id}
+							name={organization.name}
+							phone={organization.phone}
+							updateOrganizationHandler={updateOrganizationHandler}
+						/>
 					</li>
 				))}
 			</ul>

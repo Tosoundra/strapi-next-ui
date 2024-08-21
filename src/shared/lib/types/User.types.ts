@@ -3,14 +3,9 @@ export type UserStrapi = {
 	readonly username: string;
 	readonly email: string;
 	readonly phone: string;
-	// readonly provider: string;
-	// readonly confirmed: boolean;
-	// readonly blocked: boolean;
-	// readonly createdAt: string;
-	// readonly updatedAt: string;
 };
 
-export type UserSignInResponse = {
+export type UserStrapiResponse = {
 	readonly jwt: string;
 	readonly user: UserStrapi;
 };

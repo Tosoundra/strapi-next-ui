@@ -28,7 +28,8 @@
 			"@config/*": ["src/shared/config/*"],
 			"@constants/*": ["src/shared/constants/*"],
 			"@pages/*": ["src/pages/*"],
-			"@store/*": ["src/app/store/*"]
+			"@entities/*": ["src/entities/*"],
+			"@features/*": ["src/features/*"]
 		},
 		"incremental": true,
 		"plugins": [
@@ -37,6 +38,6 @@
 			}
 		]
 	},
-	"include": ["src", "src/index.tsx", "react-app-env.d.ts", ".next/types/**/*.ts"],
+	"include": ["src", "src/index.tsx", "react-app-env.d.ts", ".next/types/**/*.ts", "src/shared/lib/types/**/*.ts"],
 	"exclude": ["node_modules"]
 }
