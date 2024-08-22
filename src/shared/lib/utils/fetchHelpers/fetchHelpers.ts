@@ -1,4 +1,5 @@
 import { authOptions } from '@shared/config';
+import { StrapiError } from '@shared/lib/types';
 import { getServerSession } from 'next-auth';
 
 type ErrorApiResponse = {
@@ -27,7 +28,7 @@ export const GET = async (URL: string): Promise<any> => {
 	}
 };
 
-export const POST = async (URL: string, data: any): Promise<any | ErrorApiResponse> => {
+export const POST = async (URL: string, data: any): Promise<any | StrapiError> => {
 	try {
 		const session = await getServerSession(authOptions);
 
@@ -41,10 +42,10 @@ export const POST = async (URL: string, data: any): Promise<any | ErrorApiRespon
 			body: JSON.stringify(data),
 		});
 		if (!response.ok) {
-			const { error } = await response.json();
+			const { error } = (await response.json()) as StrapiError;
 			console.log('##########', error, 'fetch helpers ------- POST', '##########');
 
-			throw new Error(error.status);
+			throw new Error(error.message);
 		}
 
 		return await response.json();

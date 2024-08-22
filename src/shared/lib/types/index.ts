@@ -4,3 +4,4 @@ export type { FormProps } from './FormProps.types';
 export type { StrapiResponse } from './StrapiResponse.types';
 export type { OrganizationType } from './Organization.types';
 export type { StrapiError } from './StrapiError.types';
+export type { CustomError } from './CustomError/CustomError.types';

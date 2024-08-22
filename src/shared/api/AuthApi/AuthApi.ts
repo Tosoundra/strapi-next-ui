@@ -1,4 +1,4 @@
-import { UserStrapiResponse } from '@shared/lib/types';
+import { CustomError, UserStrapiResponse } from '@shared/lib/types';
 import { POST } from '@shared/lib/utils';
 
 type Credentials = {
@@ -17,7 +17,7 @@ type RegisterData = {
 };
 
 interface AuthType {
-	login: (credentials: Credentials) => Promise<UserStrapiResponse>;
+	login: (credentials: Credentials) => Promise<UserStrapiResponse | CustomError>;
 	register: (registerData: RegisterData) => Promise<UserStrapiResponse>;
 }
 
@@ -28,7 +28,7 @@ export class AuthApi implements AuthType {
 		this.URL = `${process.env.STRAPI_BACKEND_API}/auth/local`;
 	}
 
-	async login(credentials: Credentials): Promise<UserStrapiResponse> {
+	async login(credentials: Credentials): Promise<UserStrapiResponse | CustomError> {
 		return POST(this.URL, credentials);
 	}
 

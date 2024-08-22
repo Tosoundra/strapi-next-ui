@@ -1,4 +1,4 @@
-import { Button } from '@ui/Button/Button';
+import { Button } from '@shared/ui';
 import { ComponentProps, FC, ReactNode } from 'react';
 import styles from './styles.module.scss';
 import classNames from 'classnames';

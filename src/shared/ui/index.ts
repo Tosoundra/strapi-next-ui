@@ -24,3 +24,4 @@ export { DeclineButton } from './DeclineButton/DeclineButton';
 export { ConfirmationButton } from './ConfirmationButton/ConfirmationButton';
 export { AdminDashboardContainer } from './AdminDashboardContainer/AdminDashboardContainer';
 export { EmployeeForm } from './EmployeeForm/EmployeeForm';
+export { RonixLogo } from './RonixLogo/RonixLogo';

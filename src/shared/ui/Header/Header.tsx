@@ -1,5 +1,5 @@
 import { Logout } from '@shared/ui';
-import { RonixLogo } from '@ui/RonixLogo/RonixLogo';
+import { RonixLogo } from '@shared/ui';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FC } from 'react';

@@ -33,15 +33,3 @@ const addUserHandler = async (data: FormData) => {
 export default function NewEmployee({ params }: Props) {
 	return <CreateNewEmployee />;
 }
-
-// export default function NewEmployee({ params }: Props) {
-// 	return (
-// 		<EmployeeForm action={addUserHandler} email='' password='' phone='' confirmable>
-// 			<fieldset>
-// 				<span>Имя</span>
-// 				<Input confirmable value='' type='text' name='username' id='username' required />
-// 			</fieldset>
-// 			<input type='hidden' name='organization' value={params.organizationId} />
-// 		</EmployeeForm>
-// 	);
-// }

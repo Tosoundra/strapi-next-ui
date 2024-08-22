@@ -1,11 +1,11 @@
 'use client';
 
 import { Input } from '@shared/ui';
-import { ComponentProps, FC } from 'react';
+import { ComponentProps, FC, ReactNode, useEffect, useState } from 'react';
 import styles from './styles.module.scss';
 
 type Props = {
-	// children: ReactNode;
+	children?: ReactNode;
 	phone: string;
 	email: string;
 	password: string;
@@ -24,11 +24,15 @@ export const EmployeeForm: FC<Props> = ({
 	confirmable = false,
 	...formProps
 }) => {
-	// const onSubmitHandler: FormEventHandler<HTMLFormElement> = async (event) => {
-	// 	event.preventDefault();
-	// 	const formData = new FormData(event.target as HTMLFormElement);
-	// 	formData.forEach((value) => console.log(value));
-	// };
+	const [phoneInputValue, setPhoneInputValue] = useState('');
+	const [emailInputValue, setEmailInputValue] = useState('');
+	const [passwordInputValue, setPasswordInputValue] = useState('');
+
+	useEffect(() => {
+		setPhoneInputValue(phone);
+		setEmailInputValue(email);
+		setPasswordInputValue(password);
+	}, [phone, email, password]);
 
 	return (
 		<form className={styles.container} id='employee-form' {...formProps}>
@@ -39,7 +43,7 @@ export const EmployeeForm: FC<Props> = ({
 					className={styles.input}
 					editable={editable}
 					confirmable={confirmable}
-					value={phone}
+					value={phoneInputValue}
 					type='text'
 					name='phone'
 					id='phone'
@@ -52,7 +56,7 @@ export const EmployeeForm: FC<Props> = ({
 					className={styles.input}
 					confirmable={confirmable}
 					editable={editable}
-					value={email}
+					value={emailInputValue}
 					type='email'
 					name='email'
 					id='email'
@@ -66,7 +70,7 @@ export const EmployeeForm: FC<Props> = ({
 					hidable={hidable}
 					editable={editable}
 					confirmable={confirmable}
-					value={password}
+					value={passwordInputValue}
 					type='password'
 					name='password'
 					id='password'

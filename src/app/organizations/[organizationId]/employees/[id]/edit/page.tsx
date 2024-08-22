@@ -1,6 +1,7 @@
 import { api } from '@shared/api';
 import { EmployeeForm, Input } from '@shared/ui';
 import styles from './styles.module.scss';
+import { redirect } from 'next/navigation';
 
 type Props = {
 	params: { id: string; organizationId: string };

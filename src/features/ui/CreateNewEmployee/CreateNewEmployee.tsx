@@ -10,7 +10,15 @@ export const CreateNewEmployee: FC<ComponentProps<'form'>> = ({ ...formProps }) 
 		<EmployeeForm {...formProps} email='' password='' phone='' confirmable>
 			<fieldset>
 				<span>Имя</span>
-				<Input confirmable value='' type='text' name='username' id='username' required />
+				<Input
+					confirmable
+					value={username}
+					onChange={(e) => setUsername(e.target.value)}
+					type='text'
+					name='username'
+					id='username'
+					required
+				/>
 			</fieldset>
 			<input type='hidden' name='organization' />
 		</EmployeeForm>

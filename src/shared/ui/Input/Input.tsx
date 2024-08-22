@@ -3,6 +3,7 @@ import { Confirmed, Edit, Show } from '@shared/ui';
 import classNames from 'classnames';
 import { ComponentProps, FC, MouseEventHandler, useState } from 'react';
 import styles from './styles.module.scss';
+import { useValidate } from '@shared/lib/hooks';
 
 type Props = {
 	editable?: boolean;
@@ -23,7 +24,8 @@ export const Input: FC<Props> = ({
 }) => {
 	const [isEditActive, setIsEditActive] = useState(false);
 	const [isVisible, setIsVisible] = useState(false);
-	const [error, setError] = useState('');
+	const [isVisit, setIsVisit] = useState(false);
+	const { error } = useValidate(isVisit, value, inputProps.pattern!, inputProps.type!);
 
 	const onClickEditHandler: MouseEventHandler<HTMLButtonElement> = () => {
 		setIsEditActive(!isEditActive);
@@ -34,18 +36,24 @@ export const Input: FC<Props> = ({
 		return (
 			<div className={classNames(styles.container)}>
 				<Confirmed required />
-				<input {...inputProps} className={classNames(styles.input, className)} type='text' defaultValue={value} />
-				<span>{error}</span>
+				<input
+					onBlur={() => setIsVisit(true)}
+					className={classNames(styles.input, className)}
+					type='text'
+					defaultValue={value}
+					{...inputProps}
+				/>
+				<span className={styles.error}>{error}</span>
 			</div>
 		);
 	}
 
 	if (common) {
 		return (
-			<>
-				<input className={classNames(styles.input, className)} {...inputProps} />
-				<span>{error}</span>
-			</>
+			<div>
+				<input onBlur={() => setIsVisit(true)} className={classNames(styles.input, className)} {...inputProps} />
+				<span className={styles.error}>{error}</span>
+			</div>
 		);
 	}
 
@@ -58,29 +66,30 @@ export const Input: FC<Props> = ({
 
 			{hidable && !isVisible ? (
 				<input
-					{...inputProps}
 					className={classNames(styles.input, styles['hidden-border'], className)}
 					type='password'
 					defaultValue={value}
 					readOnly
+					{...inputProps}
 				/>
 			) : isEditActive && editable ? (
 				<>
 					<input
-						{...inputProps}
+						onBlur={() => setIsVisit(true)}
 						className={classNames(styles.input, styles.active, className)}
 						type='text'
 						defaultValue={value}
+						{...inputProps}
 					/>
-					<span>{error}</span>
+					<span className={styles.error}>{error}</span>
 				</>
 			) : (
 				<input
-					{...inputProps}
 					className={classNames(styles.input, styles['hidden-border'], className)}
 					type='text'
 					readOnly
 					defaultValue={value}
+					{...inputProps}
 				/>
 			)}
 		</div>

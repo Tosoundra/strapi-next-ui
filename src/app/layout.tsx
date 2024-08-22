@@ -4,6 +4,8 @@ import { Footer, Header } from '@shared/ui';
 import classNames from 'classnames';
 import type { Metadata, Viewport } from 'next';
 import { Inter, Montserrat } from 'next/font/google';
+import { Slide, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const inter = Inter({ subsets: ['cyrillic'] });
 const montserrat = Montserrat({ subsets: ['cyrillic'] });
@@ -29,6 +31,16 @@ export default function RootLayout({
 				<SessionProviderLayout>
 					<Header />
 					<main>{children}</main>
+					<ToastContainer
+						autoClose={3000}
+						closeButton
+						closeOnClick
+						hideProgressBar
+						pauseOnHover={false}
+						position='bottom-center'
+						theme='colored'
+						transition={Slide}
+					/>
 					<Footer />
 				</SessionProviderLayout>
 			</body>
