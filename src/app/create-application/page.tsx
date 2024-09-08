@@ -1,5 +1,5 @@
 import { ApplicationForm } from '@shared/ui';
-import { NewApplication } from '@ui/NewApplication/NewApplication';
+import { NewApplication } from '@shared/ui';
 import { Metadata } from 'next';
 import { useState } from 'react';
 

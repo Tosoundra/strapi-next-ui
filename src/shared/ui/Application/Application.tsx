@@ -56,11 +56,7 @@ export const Application: FC<Props> = ({
 	username,
 }) => {
 	const [currentTab, setCurrentTab] = useState<Tabs>(Tabs.description);
-	const route = useRouter();
 	const pathname = usePathname();
-	const a = useSession();
-
-	console.log(a);
 
 	return (
 		<div className={styles.application}>

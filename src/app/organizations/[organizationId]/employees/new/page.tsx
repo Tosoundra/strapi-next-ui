@@ -1,10 +1,7 @@
-import { EmployeeForm, Input } from '@shared/ui';
-import { FormEventHandler, FormHTMLAttributes, useState } from 'react';
-import styles from './styles.module.scss';
 import { api } from '@shared/api';
-import { cookies } from 'next/headers';
+import { EmployeeForm } from '@shared/ui';
 import { redirect } from 'next/navigation';
-import { CreateNewEmployee } from '@features/ui';
+import { createNewUser } from './api/createNewUser';
 
 type Props = {
 	params: {
@@ -12,24 +9,11 @@ type Props = {
 	};
 };
 
-const addUserHandler = async (data: FormData) => {
-	'use server';
-	const { username, phone, email, password, organization } = Object.fromEntries(data);
-	const registerData = {
-		username,
-		password,
-		phone,
-		email,
-		organization: { id: Number(organization) },
+export default function NewEmployee({ params }: Props) {
+	const handleFormSubmit = async (formData: FormData) => {
+		'use server';
+		await createNewUser(formData, params.organizationId);
 	};
 
-	const response = await api.auth.register(registerData);
-	if (response.error) {
-		return;
-	}
-	redirect(`/organizations/${organization}/employees`);
-};
-
-export default function NewEmployee({ params }: Props) {
-	return <CreateNewEmployee />;
+	return <EmployeeForm action={handleFormSubmit} email='' password='' phone='' username='' confirmable />;
 }

@@ -20,6 +20,7 @@
 
 	.label {
 		place-self: center;
+		color: $mainColor;
 	}
 
 	.input {
@@ -34,6 +35,11 @@
 		justify-content: space-between;
 		align-items: center;
 	}
+}
+
+.active {
+	padding: 24px 46px;
+	border-color: $utilitiesColor;
 }
 
 .organization,

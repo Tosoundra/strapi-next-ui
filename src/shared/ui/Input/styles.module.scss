@@ -1,24 +1,38 @@
 .container {
 	width: 220px;
-	display: flex;
+	display: grid;
+	grid-template-columns: min-content 1fr;
+	grid-template-rows: min-content min-content;
 	align-items: center;
-	gap: 24px;
+	gap: 0 24px;
 	text-wrap: nowrap;
 }
 
+.input-container {
+	display: flex;
+	flex-direction: column;
+}
+
 .input {
-	width: 100%;
 	@include input;
 	color: $color7B;
+
+	// &:not(:read-only) {
+	// 	border-color: #000;
+	// 	color: #000;
+	// }
+}
+
+.input-error {
+	border-width: 1px;
+	border-color: $redColor;
 }
 
 .error {
+	grid-column-start: 2;
 	color: $redColor;
 	font-size: 12px;
-}
-
-.active {
-	color: #000;
+	text-wrap: wrap;
 }
 
 .hidden-border {

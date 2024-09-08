@@ -12,20 +12,23 @@ export const SignInForm: FC = () => {
 	const [identifier, setIdentifier] = useState('');
 	const [password, setPassword] = useState('');
 	const [rememberMe, setRememberMe] = useState(false);
+
+	const [isPending, setIsPending] = useState(false);
+
 	const router = useRouter();
 
 	const loginHandler: FormEventHandler<HTMLFormElement> = async (event) => {
 		event.preventDefault();
-
+		setIsPending(true);
 		const response = await signIn('credentials', {
 			identifier,
 			password,
 			redirect: false,
-			callbackUrl: '/organizations',
 		});
 
 		if (!response?.ok) {
 			toast.error('Неверные почта или пароль');
+			setIsPending(false);
 			return;
 		}
 
@@ -36,7 +39,7 @@ export const SignInForm: FC = () => {
 	};
 
 	return (
-		<AuthForm onSubmit={loginHandler} label='Авторизация' submitLabel='Войти'>
+		<AuthForm onSubmit={loginHandler} label='Авторизация' submitLabel='Войти' isPending={isPending}>
 			<Input
 				common
 				className={styles.input}
@@ -46,7 +49,7 @@ export const SignInForm: FC = () => {
 				name='identifier'
 				id='identifier'
 				placeholder='Email'
-				pattern='^[^\s@]+@[^\s@]+\.[^\s@]+$'
+				inputFieldType='email'
 				required
 			/>
 			<Input

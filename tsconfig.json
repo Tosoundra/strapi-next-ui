@@ -23,6 +23,7 @@
 			"@shared/*": ["src/shared/*"],
 			"@pages/*": ["src/pages/*"],
 			"@entities/*": ["src/entities/*"],
+			"@widgets/*": ["src/widgets/*"],
 			"@features/*": ["src/features/*"]
 		},
 		"incremental": true,

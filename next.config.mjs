@@ -9,7 +9,6 @@ const nextConfig = {
 	sassOptions: {
 		includePaths: [path.join(__dirname, 'styles')],
 		prependData: `@import "index.scss";`,
-		
 	},
 	typescript: {
 		ignoreBuildErrors: true,

@@ -4,7 +4,7 @@
 	.tooltip {
 		position: absolute;
 		padding: 10px;
-		border-radius: 7px 0 7px 7px;
+		border-radius: 0 7px 7px 7px;
 		background-color: rgba($color: $utilitiesColor, $alpha: 0.85);
 		display: none;
 		@include tooltipFontStyles;

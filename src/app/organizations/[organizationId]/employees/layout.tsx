@@ -4,9 +4,10 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { ReactNode } from 'react';
 import styles from './styles.module.scss';
+import { EmployeesNavbar } from '@widgets/ui';
 
 type Props = {
-	params: { organizationId: string };
+	params: { organizationId: string; id: string };
 	children: ReactNode;
 };
 
@@ -26,16 +27,9 @@ export default async function EmployeeLayout({ children, params }: Props) {
 		<>
 			<AdminDashboardContainer tabName='Сотрудники' href={`/organizations/${params.organizationId}/employees/new`}>
 				<div className={styles.container}>
-					<aside>
-						<ul className={styles['employees-list']}>
-							{employees.map(({ id, username }) => (
-								<li className={styles.employee} key={id}>
-									<Link href={`/organizations/${params.organizationId}/employees/${id}/edit`}>{username}</Link>
-								</li>
-							))}
-						</ul>
-					</aside>
-					{children}
+					<EmployeesNavbar employees={employees} organizationId={params.organizationId} />
+
+					<div className={styles['form-container']}>{children}</div>
 				</div>
 			</AdminDashboardContainer>
 			<div className={styles['actions-menu']}>
