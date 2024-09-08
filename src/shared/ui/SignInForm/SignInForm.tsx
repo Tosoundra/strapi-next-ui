@@ -1,42 +1,76 @@
 'use client';
 
-import { AuthForm } from '@shared/ui';
+import { AuthForm, Input } from '@shared/ui';
+
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import { FC, useState, type FormEventHandler } from 'react';
+import { FC, useEffect, useState, type FormEventHandler } from 'react';
 import styles from './styles.module.scss';
+import { toast } from 'react-toastify';
 
 export const SignInForm: FC = () => {
-	const [error, setError] = useState('');
+	const [identifier, setIdentifier] = useState('');
+	const [password, setPassword] = useState('');
+	const [rememberMe, setRememberMe] = useState(false);
+
+	const [isPending, setIsPending] = useState(false);
 
 	const router = useRouter();
 
 	const loginHandler: FormEventHandler<HTMLFormElement> = async (event) => {
 		event.preventDefault();
-
-		const formData = new FormData(event.currentTarget);
-		const { identifier, password, rememberMe } = Object.fromEntries(formData);
-
-		const user = await signIn('credentials', {
+		setIsPending(true);
+		const response = await signIn('credentials', {
 			identifier,
 			password,
-			rememberMe,
 			redirect: false,
-			callbackUrl: '/organizations',
 		});
-		if (!user?.ok) {
-			setError(user?.error!);
+
+		if (!response?.ok) {
+			toast.error('Неверные почта или пароль');
+			setIsPending(false);
 			return;
+		}
+
+		if (rememberMe) {
+			localStorage.setItem('remember', '1');
 		}
 		router.replace('/organizations');
 	};
 
 	return (
-		<AuthForm onSubmit={loginHandler} label='Авторизация' submitLabel='Войти'>
-			<input className={styles.input} type='text' name='identifier' id='login' placeholder='Логин' required />
-			<input className={styles.input} type='password' name='password' id='password' placeholder='Пароль' required />
+		<AuthForm onSubmit={loginHandler} label='Авторизация' submitLabel='Войти' isPending={isPending}>
+			<Input
+				common
+				className={styles.input}
+				value={identifier}
+				onChange={(e) => setIdentifier(e.target.value)}
+				type='email'
+				name='identifier'
+				id='identifier'
+				placeholder='Email'
+				inputFieldType='email'
+				required
+			/>
+			<Input
+				common
+				className={styles.input}
+				value={password}
+				onChange={(e) => setPassword(e.target.value)}
+				type='password'
+				name='password'
+				id='password'
+				placeholder='Пароль'
+				required
+			/>
 			<label htmlFor='rememberMe' className={styles.remember}>
-				<input type='checkbox' name='rememberMe' id='rememberMe' />
+				<input
+					checked={rememberMe}
+					onChange={(e) => setRememberMe(e.target.checked)}
+					type='checkbox'
+					name='rememberMe'
+					id='rememberMe'
+				/>
 				<span>Запомнить меня</span>
 			</label>
 		</AuthForm>

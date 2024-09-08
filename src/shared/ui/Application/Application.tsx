@@ -4,10 +4,10 @@ import { FC, useState } from 'react';
 import styles from './styles.module.scss';
 import { Chat, Button, Description } from '@shared/ui';
 import Image from 'next/image';
-import { GoToButton } from '@shared/ui/';
-import { Info } from '@shared/ui/';
-import { Files } from '@shared/ui/';
-import { Comments } from '@shared/ui/';
+import { GoToButton } from '@shared/ui';
+import { Info } from '@shared/ui';
+import { Files } from '@shared/ui';
+import { Comments } from '@shared/ui';
 import classNames from 'classnames';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
@@ -56,11 +56,7 @@ export const Application: FC<Props> = ({
 	username,
 }) => {
 	const [currentTab, setCurrentTab] = useState<Tabs>(Tabs.description);
-	const route = useRouter();
 	const pathname = usePathname();
-	const a = useSession();
-
-	console.log(a);
 
 	return (
 		<div className={styles.application}>

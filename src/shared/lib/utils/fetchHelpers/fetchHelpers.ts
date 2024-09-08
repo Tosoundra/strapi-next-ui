@@ -1,5 +1,7 @@
 import { authOptions } from '@shared/config';
+import { StrapiError } from '@shared/lib/types';
 import { getServerSession } from 'next-auth';
+import { useSession } from 'next-auth/react';
 
 type ErrorApiResponse = {
 	readonly error: any;
@@ -7,6 +9,8 @@ type ErrorApiResponse = {
 
 export const GET = async (URL: string): Promise<any> => {
 	const session = await getServerSession(authOptions);
+	console.clear();
+	console.log('##########', URL, 'fetch helpers ------- POST', '##########');
 	try {
 		const response = await fetch(URL, {
 			headers: {
@@ -27,7 +31,7 @@ export const GET = async (URL: string): Promise<any> => {
 	}
 };
 
-export const POST = async (URL: string, data: any): Promise<any | ErrorApiResponse> => {
+export const POST = async (URL: string, data: any): Promise<any | StrapiError> => {
 	try {
 		const session = await getServerSession(authOptions);
 
@@ -41,10 +45,10 @@ export const POST = async (URL: string, data: any): Promise<any | ErrorApiRespon
 			body: JSON.stringify(data),
 		});
 		if (!response.ok) {
-			const { error } = await response.json();
+			const { error } = (await response.json()) as StrapiError;
 			console.log('##########', error, 'fetch helpers ------- POST', '##########');
 
-			throw new Error(error.status);
+			throw new Error(error.message);
 		}
 
 		return await response.json();
@@ -70,7 +74,31 @@ export const PUT = async (URL: string, data: any): Promise<any | ErrorApiRespons
 		});
 		if (!response.ok) {
 			const { error } = await response.json();
-			console.log('##########', error, 'fetch helpers ------- POST', '##########');
+			console.log('##########', error, 'fetch helpers ------- PUT', '##########');
+
+			throw new Error(error.status);
+		}
+
+		return await response.json();
+	} catch (error) {
+		if (error instanceof Error) {
+			return { error: error.message };
+		}
+	}
+};
+
+export const DELETE = async (URL: string, jwt: string): Promise<any | ErrorApiResponse> => {
+	try {
+		const response = await fetch(URL, {
+			method: 'DELETE',
+			headers: {
+				Authorization: `Bearer ${jwt}`,
+				'Content-Type': 'application/json',
+			},
+		});
+		if (!response.ok) {
+			const { error } = await response.json();
+			console.log('##########', error, 'fetch helpers ------- DELETE', '##########');
 
 			throw new Error(error.status);
 		}

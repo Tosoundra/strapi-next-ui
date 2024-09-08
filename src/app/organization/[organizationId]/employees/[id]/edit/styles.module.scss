@@ -1,0 +1,36 @@
+.container {
+	padding: 25px 30px;
+	@include border;
+	border-radius: $radius13;
+	color: $color7B;
+
+	.head {
+		position: relative; // Устанавливаем относительное позиционирование
+		padding-right: 100px; // Отступ справа для дополнительного пространства перед линией
+		font-size: 16px;
+		font-weight: 700;
+		line-height: 28px;
+		@include montserrat;
+
+		// Линия справа от заголовка
+		&::after {
+			content: '';
+			position: absolute;
+			right: 0;
+			top: 0;
+			height: 110%;
+			width: 2px; // Ширина линии
+			background-color: $utilitiesColor; // Цвет линии
+			border-radius: 0 $radius13 $radius13 0; // Закругление справа
+			z-index: 1; // Убедитесь, что линия отображается выше
+		}
+	}
+
+	.body {
+		padding-left: 100px;
+		.input {
+			height: 28px;
+			border-radius: $radius7;
+		}
+	}
+}

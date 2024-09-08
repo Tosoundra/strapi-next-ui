@@ -1,3 +1,4 @@
 export type StrapiResponse<Entity> = {
-	data: Entity;
+	data?: Entity;
+	error?: string;
 };

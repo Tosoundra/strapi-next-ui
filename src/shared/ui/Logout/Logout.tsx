@@ -8,7 +8,7 @@ import { FC } from 'react';
 export const Logout: FC = () => {
 	const logoutHandler = () => {
 		signOut({ callbackUrl: '/' });
-		fetch(`${window.location.origin}/api/auth/logout`, { method: 'DELETE' });
+		localStorage.removeItem('remember');
 	};
 
 	return (
