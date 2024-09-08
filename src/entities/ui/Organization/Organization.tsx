@@ -32,7 +32,6 @@ export const Organization: FC<Props> = ({
 	const [emailInputValue, setEmailInputValue] = useState('');
 
 	const session = useSession();
-	console.log(session.data?.jwt);
 
 	const phoneInputRef = useMask({ mask: '+7(___)___-__-__', replacement: { _: /\d/ } });
 
